@@ -36,10 +36,11 @@ function init() {
   ctx.fillRect(0, 0, width, height);
 
   function drawText() {
-    ctx.font = "60px Arial";
+    const fontSize = Math.min(60, width / 10);
+    ctx.font = `${fontSize}px Arial`;
     ctx.fillStyle = "lightblue";
     ctx.textAlign = "center";
-    ctx.fillText("I love you", width / 2, height / 2.2 + 400);
+    ctx.fillText("I love you", width / 2, height / 2 + (mobile ? 100 : 200));
   }
 
   function heartPosition(rad) {
@@ -65,9 +66,9 @@ function init() {
     ctx.fillRect(0, 0, width, height);
   });
 
-  var traceCount = mobile ? 20 : 50;
+  var traceCount = mobile ? 10 : 50;
   var pointsOrigin = [];
-  var dr = mobile ? 0.3 : 0.1;
+  var dr = mobile ? 0.5 : 0.1;
   for (var i = 0; i < Math.PI * 2; i += dr)
     pointsOrigin.push(scaleAndTranslate(heartPosition(i), 310, 19, 0, 0));
   for (var i = 0; i < Math.PI * 2; i += dr)
